@@ -45,7 +45,7 @@
             console.log('log');
             var animalDiv = $("<div class='animal'>");
 
-            var rating = results[i].rating;
+            var rating = results[i].rating.toUpperCase();
             var pOne = $('<p>').text('Rating: ' + rating);
             animalDiv.append(pOne);
 
