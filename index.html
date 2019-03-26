@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/reset.css"> -->
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/style.css">
   <!-- <script src="assets/JavaScript/main.js"></script> -->
 </head>
 
@@ -20,15 +21,20 @@
       <input type="text" id="gif-input"><br><br>
 
       <input type="submit" id="add-gif" value="Add">
+      <input type="reset" id="clear" value="Clear Gifs">
     </form>
   </div>
-
-
+  
+  
   <div id="gif-images">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
       var animals = ['cat', 'dog', 'panda', 'squirrel', 'whale', 'dolphin', 'raccoon', 'penguin', 'duck', 'gorilla', 'lion', 'cheetah', 'snake', 'grizzly bear', 'shark', 'elephant', 'owl']
 
+      function emptyGifs() {
+        $('#gif-images').empty();
+      }
+      
       function displayGifInfo() {
         var gif = $(this).attr('data-name');
         var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=pDw3ye2yHiWPwWzvr4ruP8qT3pUuCrTq&limit=10';
@@ -93,6 +99,8 @@
           $(this).attr('src', $(this).attr('data-still'));
         }
       });
+
+      $('#clear').on('click', emptyGifs);
 
       $(document).on('click', '.animal-btn', displayGifInfo);
 
