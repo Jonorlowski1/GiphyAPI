@@ -39,6 +39,8 @@
         var gif = $(this).attr('data-name');
         var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=pDw3ye2yHiWPwWzvr4ruP8qT3pUuCrTq&limit=10';
 
+
+      // AJAX Request for GIPHY.COM
         $.ajax({
           url: queryURL,
           method: 'GET'
