@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Page Title</title>
+  <title>Giphy Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/reset.css"> -->
   <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/style.css">
@@ -63,7 +63,12 @@
             gifs.attr('data-state', 'still');
             animalDiv.append(gifs);
 
+            var downloadLink = $('<br><a download>');
+            downloadLink.attr('href', results[i].images.fixed_height.url);
+            downloadLink.text('DOWNLOAD');
+
             $('#gif-images').prepend(animalDiv);
+            $(animalDiv).append(downloadLink);
           }
         });
       }
@@ -78,6 +83,7 @@
           t.attr('data-name', animals[i]);
           t.text(animals[i]);
           $('#gif-view').append(t);
+
         }
       };
 
