@@ -62,9 +62,10 @@
             gifs.attr('data-animate', results[i].images.fixed_height.url);
             gifs.attr('data-state', 'still');
             animalDiv.append(gifs);
-
+            
+            // Download Button
             var downloadLink = $('<br><a download>');
-            downloadLink.attr('href', results[i].images.fixed_height.url);
+            downloadLink.attr('href', results[i].images.fixed_height);
             downloadLink.text('DOWNLOAD');
 
             $('#gif-images').prepend(animalDiv);
