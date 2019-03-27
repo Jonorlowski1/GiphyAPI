@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Giphy Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/reset.css"> -->
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/style.css">
   <!-- <script src="assets/JavaScript/main.js"></script> -->
 </head>
@@ -16,14 +16,16 @@
 
     <div id="gif-view"></div><br>
 
-    <form id="gif-form">
-      <label for="gif-input">New Animal</label>
-      <input type="text" id="gif-input"><br><br>
+    <div id="form">
+      <form id="gif-form">
+        <label for="gif-input">New Animal</label>
+        <input type="text" id="gif-input"><br><br>
 
-      <input type="submit" id="add-gif" value="Add">
-      <input type="reset" id="clear" value="Clear Gifs"><br>
-      <input type="submit" id="more-gifs" value="More Gifs">
-    </form>
+        <input type="submit" id="add-gif" value="Add">
+        <input type="reset" id="clear" value="Clear Gifs"><br>
+        <input type="submit" id="more-gifs" value="More Gifs">
+      </form>
+    </div><br><br>
   </div>
 
 
@@ -48,12 +50,12 @@
             console.log('log');
             var animalDiv = $("<div class='animal'>");
 
-            var rating = results[i].rating.toUpperCase();
-            var pOne = $('<p>').text('Rating: ' + rating);
+            var title = results[i].title;
+            var pOne = $('<p>').text('Title: ' + title);
             animalDiv.append(pOne);
 
-            var title = results[i].title;
-            var pTwo = $('<p>').text('Title: ' + title);
+            var rating = results[i].rating.toUpperCase();
+            var pTwo = $('<p>').text('Rating: ' + rating);
             animalDiv.append(pTwo);
 
             var gifs = $("<img class='gif'>");
@@ -62,10 +64,11 @@
             gifs.attr('data-animate', results[i].images.fixed_height.url);
             gifs.attr('data-state', 'still');
             animalDiv.append(gifs);
-            
+
             // Download Button
             var downloadLink = $('<br><a download>');
-            downloadLink.attr('href', results[i].images.fixed_height);
+            downloadLink.attr('href', results[i].images.fixed_height.url);
+            downloadLink.attr('id', 'download');
             downloadLink.text('DOWNLOAD');
 
             $('#gif-images').prepend(animalDiv);
