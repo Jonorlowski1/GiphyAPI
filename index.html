@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/reset.css">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Acme|Righteous|Play" rel="stylesheet">
   <!-- <script src="assets/JavaScript/main.js"></script> -->
 </head>
 
@@ -18,12 +19,12 @@
 
     <div id="form">
       <form id="gif-form">
-        <label for="gif-input">New Animal</label>
-        <input type="text" id="gif-input"><br><br>
+        <label id="input-head" for="gif-input">Search GIF Database</label>
+        <input type="text" id="gif-input">
 
-        <input type="submit" id="add-gif" value="Add">
-        <input type="reset" id="clear" value="Clear Gifs"><br>
-        <input type="submit" id="more-gifs" value="More Gifs">
+        <input type="submit" id="add-gif" value="Add"><br><br>
+        <input type="reset" id="clear" value="Clear Results">
+        <input type="submit" id="more-gifs" value="More Results">
       </form>
     </div><br><br>
   </div>
@@ -52,10 +53,12 @@
 
             var title = results[i].title;
             var pOne = $('<p>').text('Title: ' + title);
+            pOne.attr('id', 'title-text');
             animalDiv.append(pOne);
 
             var rating = results[i].rating.toUpperCase();
-            var pTwo = $('<p>').text('Rating: ' + rating);
+            var pTwo = $('<p>').text('Rating: ' + '('+rating+')');
+            pTwo.attr('id', 'rating-text');
             animalDiv.append(pTwo);
 
             var gifs = $("<img class='gif'>");
