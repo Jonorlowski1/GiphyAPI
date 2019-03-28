@@ -16,20 +16,6 @@
 
 <body>
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="jumbotron">
-          <h1 class="display-4">Hello, world!</h1>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-            featured content or information.</p>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </p>
-        </div>
-      </div>
-    </div>
 
       <div id="myHeader">
 
@@ -66,15 +52,13 @@
 
     function displayWikiInfo() {
       var searchTerm = $(this).attr('data-name');
-      var queryURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search='+searchTerm+'&format=json&origin=https%3A%2F%2Fen.wikipedia.org&callback=wikiCallback';
+      var queryURL = 'http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + searchTerm + '&format=jsonfm';
 
       $.ajax({
         url:queryURL,
         method: 'GET'
       }).then(function(response) {
         console.log(response);
-
-
       })
     }
 
@@ -207,8 +191,6 @@
     $(document).on('click', '.animal-btn', displayWikiInfo);
     $(document).on('click', '.gif', function () {
       var state = $(this).attr('data-state');
-
-      console.log('click');
 
       if (state === 'still') {
         $(this).attr('data-state', 'animate');

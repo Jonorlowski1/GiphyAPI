@@ -7,30 +7,22 @@
 }
 
 @media screen and (max-width: 640) {
-  /* #form {
-    text-align: center;
-    display: block;
-  }
-  #gif-form {
-    text-align: left;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-  } */
+
 }
 
-.content {
-  padding: 16px;
-}
-
-.sticky {
+#myHeader {
+  z-index: 100;
+  background-color: white;
   position: fixed;
-  top: 0;
-  width: 100%
+  width: 100%;
+  height: auto;
+}
+.content {
+  margin-top: 100px;
 }
 
-.sticky + .content {
-  padding-top: 102px;
+#gif-images {
+  margin-top: 70px;
 }
 
 .animal {
@@ -66,10 +58,6 @@
   font-family: 'Acme', sans-serif;
 }
 
-#myHeader {
-  z-index: 100;
-  background-color: white;
-}
 
 form {
   margin-left: 10%;
