@@ -15,8 +15,12 @@
   background-color: white;
   position: fixed;
   width: 100%;
-  height: auto;
 }
+
+#column-head {
+  padding-left: 0;
+}
+
 .content {
   margin-top: 100px;
 }
@@ -51,6 +55,8 @@
 
 #gif-view {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #input-head,

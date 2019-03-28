@@ -17,8 +17,8 @@
 <body>
   <div class="container">
 
-      <div id="myHeader">
-
+    <div class="row" id="myHeader">
+      <div class="col-xs-12" id="column-head">
         <div id="gif-view"></div><br>
         <div id="form">
           <form id="gif-form">
@@ -30,8 +30,8 @@
             <input type="submit" id="more-gifs" value="More Results">
           </form>
         </div><br><br>
-
       </div>
+    </div>
 
     <!-- DISPLAY GIF IMAGES -->
     <div class="content">
@@ -53,12 +53,12 @@
     function displayWikiInfo() {
       var searchTerm = $(this).attr('data-name');
       var cors = 'https://cors-anywhere.herokuapp.com/'
-      var queryURL = 'http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + searchTerm + '&format=jsonfm';
+      var queryURL = 'http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + searchTerm + '&format=json';
 
       $.ajax({
         url: cors + queryURL,
         method: 'GET'
-      }).then(function(response) {
+      }).then(function (response) {
         console.log(response);
       })
     };
