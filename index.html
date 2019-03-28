@@ -60,6 +60,16 @@
         method: 'GET'
       }).then(function (response) {
         console.log(response);
+        var results = response.query.search[0];
+
+        var wikiDiv = $("<div class='wiki'>");
+
+        var snippet = results.snippet;
+
+        wikiDiv.text(snippet);
+
+        $('#wikipedia-text').prepend(wikiDiv);
+
       })
     };
 
