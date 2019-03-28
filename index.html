@@ -52,15 +52,16 @@
 
     function displayWikiInfo() {
       var searchTerm = $(this).attr('data-name');
+      var cors = 'https://cors-anywhere.herokuapp.com/'
       var queryURL = 'http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + searchTerm + '&format=jsonfm';
 
       $.ajax({
-        url:queryURL,
+        url: cors + queryURL,
         method: 'GET'
       }).then(function(response) {
         console.log(response);
       })
-    }
+    };
 
     function displayGifInfo() {
       var gif = $(this).attr('data-name');
@@ -107,7 +108,7 @@
           $(animalDiv).append(downloadLink);
         }
       });
-    }
+    };
 
 
 
@@ -124,7 +125,7 @@
       } else {
         header.removeClass("sticky");
       }
-    }
+    };
 
 
     // Function to render buttons at beginning and adding to array
