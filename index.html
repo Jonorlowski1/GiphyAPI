@@ -18,10 +18,23 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
+        <div class="jumbotron">
+          <h1 class="display-4">Hello, world!</h1>
+          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+            featured content or information.</p>
+          <hr class="my-4">
+          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+      <div id="myHeader">
 
         <div id="gif-view"></div><br>
-
-        <div class="col-md-" id="form">
+        <div id="form">
           <form id="gif-form">
             <label id="input-head" for="gif-input">Search GIF Database</label>
             <input type="text" id="gif-input">
@@ -33,16 +46,17 @@
         </div><br><br>
 
       </div>
-    </div>
 
     <!-- DISPLAY GIF IMAGES -->
-    <div class="row">
-      <div class="col-xs-7">
-        <div id="gif-images"></div>
-      </div>
+    <div class="content">
+      <div class="row">
+        <div class="col-xs-7">
+          <div id="gif-images"></div>
+        </div>
 
-      <div class="col-xs-5">
-        <div id="wikipedia-text"></div>
+        <div class="col-xs-5">
+          <div id="wikipedia-text"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -50,7 +64,19 @@
   <script>
     var animals = ['cat', 'dog', 'panda', 'squirrel', 'whale', 'dolphin', 'raccoon', 'penguin', 'duck', 'gorilla', 'lion', 'cheetah', 'snake'];
 
+    function displayWikiInfo() {
+      var searchTerm = $(this).attr('data-name');
+      var queryURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search='+searchTerm+'&format=json&origin=https%3A%2F%2Fen.wikipedia.org&callback=wikiCallback';
 
+      $.ajax({
+        url:queryURL,
+        method: 'GET'
+      }).then(function(response) {
+        console.log(response);
+
+
+      })
+    }
 
     function displayGifInfo() {
       var gif = $(this).attr('data-name');
@@ -62,7 +88,7 @@
         url: queryURL,
         method: 'GET'
       }).then(function (response) {
-        console.log(response);
+        // console.log(response);
 
         var results = response.data;
 
@@ -98,6 +124,24 @@
         }
       });
     }
+
+
+
+    // // When the user scrolls the page, execute myFunction 
+    window.onscroll = function () { stickyHeader() };
+
+    var header = $('#myHeader');
+    var sticky = header.offsetTop;
+
+    // // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function stickyHeader() {
+      if (window.pageYOffset > sticky) {
+        header.addClass("sticky");
+      } else {
+        header.removeClass("sticky");
+      }
+    }
+
 
     // Function to render buttons at beginning and adding to array
     function renderButtons() {
@@ -160,6 +204,7 @@
     });
 
     $(document).on('click', '.animal-btn', displayGifInfo);
+    $(document).on('click', '.animal-btn', displayWikiInfo);
     $(document).on('click', '.gif', function () {
       var state = $(this).attr('data-state');
 
