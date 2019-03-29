@@ -3,7 +3,10 @@
 }
 
 @media screen and (max-width: 768) {
-  
+  #wiki-container {
+    position: fixed;
+    margin-left: 58%;
+  }
 }
 
 @media screen and (max-width: 640) {
@@ -15,6 +18,11 @@
   background-color: white;
   position: fixed;
   width: 100%;
+}
+
+#wiki-container {
+  position: fixed;
+  margin-left: 57%;
 }
 
 #column-head {
