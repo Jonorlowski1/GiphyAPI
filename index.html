@@ -52,6 +52,7 @@
 
     function displayWikiInfo() {
       var searchTerm = $(this).attr('data-name');
+      // Ran into issues with CORS. Got help from tutor (Lindsey Bowen) about finding a public GitHub account that had a shortcut to bypass the needs in order to display 
       var cors = 'https://cors-anywhere.herokuapp.com/'
       var queryURL = 'http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + searchTerm + '&format=json';
 
