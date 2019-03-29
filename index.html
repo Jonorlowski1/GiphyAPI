@@ -16,7 +16,6 @@
 
 <body>
   <div class="container">
-
     <div class="row" id="myHeader">
       <div class="col-xs-12" id="column-head">
         <div id="gif-view"></div><br>
@@ -48,7 +47,7 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
-    var animals = ['cat', 'dog', 'panda', 'squirrel', 'whale', 'dolphin', 'raccoon', 'penguin', 'duck', 'gorilla', 'lion', 'cheetah', 'snake'];
+    var animals = ['cat', 'dog', 'red panda', 'squirrel', 'whale', 'dolphin', 'raccoon', 'penguin', 'duck', 'gorilla', 'lion', 'cheetah', 'snake'];
 
     function displayWikiInfo() {
       var searchTerm = $(this).attr('data-name');
@@ -62,14 +61,18 @@
       }).then(function (response) {
         console.log(response);
         var results = response[2][0];
-
+        var link = response[3][0];
+        
         var wikiDiv = $("<div class='wiki'>");
-
-        // var snippet = results.snippet;
+        var wikiLink = $("<br><a href="+link+">"+link+"</a>");
 
         wikiDiv.text(results);
+        // wikiLink.html(wikiLink);
 
         $('#wikipedia-text').prepend(wikiDiv);
+        wikiDiv.append(wikiLink);
+
+        console.log(wikiLink);
 
       })
     };
@@ -160,13 +163,25 @@
       renderButtons();
     });
 
+    function clearOffset() {
+      offset = 0;
+      console.log('offset: ' + offset);
+    }
+
+    function clearContent() {
+      $('#gif-images').empty();
+      $('#wikipedia-text').empty();
+    }
+
     // Clear Images
     $('#clear').on('click', function () {
-      $('#gif-images').empty();
+      clearContent();
+      clearOffset();
     });
 
+
     // Reset count every time .animal-btn is clicked
-    var offset = 0;
+    var offset = 1;
 
     // ADD MORE GIFS
     $('#more-gifs').on('click', function () {
@@ -174,38 +189,43 @@
       var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=pDw3ye2yHiWPwWzvr4ruP8qT3pUuCrTq&limit=10&offset=' + offset;
 
       offset++
-    
+      console.log('offset: ' + offset);
+
       $.ajax({
         url: queryURL,
         method: 'GET'
       }).then(function (response) {
         console.log(response);
 
-      //   var results = response.data;
+        var results = response.data;
 
-      //   for (i = 0; i < results.length; i++) {
-      //     console.log('log');
-      //     var animalDiv = $("<div class='animal'>");
+        for (i = 0; i < results.length; i++) {
+          console.log('log');
+          var animalDiv = $("<div class='animal'>");
 
-      //     var rating = results[i].rating.toUpperCase();
-      //     var pOne = $('<p>').text('Rating: ' + rating);
-      //     animalDiv.append(pOne);
+          var rating = results[i].rating.toUpperCase();
+          var pOne = $('<p>').text('Rating: ' + rating);
+          animalDiv.append(pOne);
 
-      //     var gifs = $("<img class='gif'>");
-      //     gifs.attr('src', results[i].images.fixed_height_still.url);
-      //     gifs.attr('data-still', results[i].images.fixed_height_still.url);
-      //     gifs.attr('data-animate', results[i].images.fixed_height.url);
-      //     gifs.attr('data-state', 'still');
-      //     animalDiv.append(gifs);
+          var gifs = $("<img class='gif'>");
+          gifs.attr('src', results[i].images.fixed_height_still.url);
+          gifs.attr('data-still', results[i].images.fixed_height_still.url);
+          gifs.attr('data-animate', results[i].images.fixed_height.url);
+          gifs.attr('data-state', 'still');
+          animalDiv.append(gifs);
 
-      //     $('#gif-images').prepend(animalDiv);
+          $('#gif-images').prepend(animalDiv);
 
-      //   }
+        }
       })
     });
 
+
+    $(document).on('click', '.animal-btn', clearContent);
     $(document).on('click', '.animal-btn', displayGifInfo);
     $(document).on('click', '.animal-btn', displayWikiInfo);
+    $(document).on('click', '.animal-btn', clearOffset);
+
     $(document).on('click', '.gif', function () {
       var state = $(this).attr('data-state');
 
