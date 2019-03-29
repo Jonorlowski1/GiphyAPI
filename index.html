@@ -64,9 +64,10 @@
         var link = response[3][0];
         
         var wikiDiv = $("<div class='wiki'>");
-        var wikiLink = $("<br><a href="+link+">"+link+"</a>");
+        var wikiLink = $("<br><br><a href="+link+">"+'Learn more about the ' + searchTerm +"</a>");
 
-        wikiDiv.text(results);
+        wikiDiv.text('Fun fact about the ' + searchTerm +':');
+        wikiDiv.append('<br>'+results);
         // wikiLink.html(wikiLink);
 
         $('#wikipedia-text').prepend(wikiDiv);
