@@ -54,20 +54,20 @@
       var searchTerm = $(this).attr('data-name');
       // Ran into issues with CORS. Got help from tutor (Lindsey Bowen) about finding a public GitHub account that had a shortcut to bypass the needs in order to display 
       var cors = 'https://cors-anywhere.herokuapp.com/'
-      var queryURL = 'http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + searchTerm + '&format=json';
+      var queryURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json';
 
       $.ajax({
         url: cors + queryURL,
         method: 'GET'
       }).then(function (response) {
         console.log(response);
-        var results = response.query.search[0];
+        var results = response[2][0];
 
         var wikiDiv = $("<div class='wiki'>");
 
-        var snippet = results.snippet;
+        // var snippet = results.snippet;
 
-        wikiDiv.text(snippet);
+        wikiDiv.text(results);
 
         $('#wikipedia-text').prepend(wikiDiv);
 
@@ -129,7 +129,7 @@
     var header = $('#myHeader');
     var sticky = header.offsetTop;
 
-    // // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    // // Added the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
     function stickyHeader() {
       if (window.pageYOffset > sticky) {
         header.addClass("sticky");
@@ -153,7 +153,7 @@
       }
     };
 
-    $('#add-gif').on('click', function () {
+    $('#add-gif').on('click', function (event) {
       event.preventDefault();
       var newGif = $('#gif-input').val().trim();
       animals.push(newGif);
@@ -165,16 +165,21 @@
       $('#gif-images').empty();
     });
 
-    // Add more Gifs
-    $('#more-gifs').on('click', function () {
-      // var gif = $(this).attr('data-name');
-      // var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=pDw3ye2yHiWPwWzvr4ruP8qT3pUuCrTq&limit=10&offset=10';
+    // Reset count every time .animal-btn is clicked
+    var offset = 0;
 
-      // $.ajax({
-      //   url: queryURL,
-      //   method: 'GET'
-      // }).then(function (response) {
-      //   console.log(response);
+    // ADD MORE GIFS
+    $('#more-gifs').on('click', function () {
+      var gif = $(this).attr('data-name');
+      var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=pDw3ye2yHiWPwWzvr4ruP8qT3pUuCrTq&limit=10&offset=' + offset;
+
+      offset++
+    
+      $.ajax({
+        url: queryURL,
+        method: 'GET'
+      }).then(function (response) {
+        console.log(response);
 
       //   var results = response.data;
 
@@ -196,7 +201,7 @@
       //     $('#gif-images').prepend(animalDiv);
 
       //   }
-      // })
+      })
     });
 
     $(document).on('click', '.animal-btn', displayGifInfo);

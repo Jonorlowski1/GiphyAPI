@@ -25,8 +25,9 @@
   margin-top: 100px;
 }
 
-#gif-images {
-  margin-top: 70px;
+#gif-images,
+#wikipedia-text {
+  margin-top: 110px;
 }
 
 .animal {
