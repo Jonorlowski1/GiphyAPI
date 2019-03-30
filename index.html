@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Acme|Righteous|Play" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Acme|Righteous|Play|Indie+Flower" rel="stylesheet">
   <!-- <script src="assets/JavaScript/main.js"></script> -->
 </head>
 
@@ -63,14 +63,17 @@
         var results = response[2][0];
         var link = response[3][0];
         
+        var wikiHead = $("<div class='wiki-head'>")
         var wikiDiv = $("<div class='wiki'>");
         var wikiLink = $("<br><br><a href="+link+">"+'Learn more about the ' + searchTerm +"</a>");
 
-        wikiDiv.text('Fun fact about the ' + searchTerm +':');
+        wikiHead.text('Fun fact about the ' + searchTerm +':').css({'font-family': "'Indie Flower', cursive"});
+
+        wikiHead.append(wikiDiv);
         wikiDiv.append('<br>'+results);
         // wikiLink.html(wikiLink);
 
-        $('#wikipedia-text').prepend(wikiDiv);
+        $('#wikipedia-text').prepend(wikiHead);
         wikiDiv.append(wikiLink);
 
         console.log(wikiLink);

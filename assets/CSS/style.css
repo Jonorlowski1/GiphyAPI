@@ -12,8 +12,14 @@
   /* margin-right: 10% */
 }
 
+.wiki-head {
+  font-size: calc(112.5% + 0.2vw);
+}
+
 .wiki {
-  padding-right: 5%
+  padding-right: 5%;
+  font-family: 'Acme', sans-serif;
+  font-size: calc(112.5% + 0.2vw);
 }
 
 #column-head {
@@ -74,33 +80,37 @@ form {
 img {
   max-width: 100%;
 }
-    @media screen and (max-width: 1200) {
+    @media screen and (max-width: 1200px) {
       .wiki {
         padding-right: 5%;
       }
-      /* #gif-display {
-        margin-right: 5%;
-      } */
     }
     
-    @media screen and (max-width: 980) {
+    @media screen and (max-width: 980px) {
       #wiki-container {
         /* position: fixed; */
         margin-right: 50%;
-        color: red;
+        /* color: red; */
       }
     }
     
-    @media screen and (max-width: 768) {
+    @media screen and (max-width: 768px) {
       #wiki-container {
         position: fixed;
         margin-left: 58%;
       }
     }
     
-    @media screen and (max-width: 640) {
+    @media screen and (max-width: 640px) {
       #wiki-container {
         position: fixed;
-        padding-left: 10%;
+        /* padding-left: 5%; */
       }
+    }
+
+    @media screen and (max-width: 497px) {
+      #gif-images,
+      #wikipedia-text {
+        margin-top: 140px;
+      }      
     }
