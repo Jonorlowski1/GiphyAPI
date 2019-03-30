@@ -1,11 +1,12 @@
 body {
+  /* https://cssgradient.io/ */
   background: rgb(82,116,56);
   background: radial-gradient(circle, rgba(82,116,56,0.9895308465182948) 22%, rgba(215,133,38,1) 100%);
 }
 
 #myHeader {
   z-index: 100;
-  background-color: white;
+  background-color: #527438;
   position: fixed;
   width: 100%;
 }
@@ -17,12 +18,15 @@ body {
 }
 
 .wiki-head {
+  text-align: center;
+  /* https://zellwk.com/blog/viewport-based-typography/ */
   font-size: calc(112.5% + 0.2vw);
 }
 
 .wiki {
   padding-right: 5%;
   font-family: 'Acme', sans-serif;
+  /* https://zellwk.com/blog/viewport-based-typography/ */
   font-size: calc(112.5% + 0.2vw);
 }
 
@@ -55,6 +59,15 @@ body {
   font-family: 'Righteous', cursive;
 }
 
+.link-text {
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+  text-decoration: underline;
+}
+
 #title-text {
   font-family: 'Righteous', cursive;
 }
@@ -71,9 +84,19 @@ body {
   text-align: center;
 }
 
-#input-head,
+#input-head {
+  font-family: 'Acme', sans-serif;
+  font-size: 20px;
+  text-shadow:
+  -1px -1px 0 #fff,
+  1px -1px 0 #fff,
+  -1px 1px 0 #fff,
+  1px 1px 0 #fff;
+}
+
 #rating-text {
   font-family: 'Acme', sans-serif;
+  font-size: 18px;
 }
 
 
@@ -84,7 +107,7 @@ form {
 }
 
 img {
-  max-width: 100%;
+  max-width: 80%;
 }
     @media screen and (max-width: 1200px) {
       .wiki {

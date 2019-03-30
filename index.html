@@ -69,12 +69,12 @@
 
         var wikiHead = $("<div class='wiki-head'>")
         var wikiDiv = $("<div class='wiki'>");
-        var wikiLink = $("<br><br><a href=" + link + ">" + 'Learn more about the ' + searchTerm + "</a>");
+        var wikiLink = $("<br><br><a class='link-text' href=" + link + ">" + 'Learn more about the ' + searchTerm + "</a>");
 
-        wikiHead.text('Fun fact about the ' + searchTerm + ':').css({ 'font-family': "'Indie Flower', cursive" });
+        wikiHead.text('Fun fact about the ' + searchTerm + ':').css({'font-family': "'Indie Flower', cursive"});
 
         wikiHead.append(wikiDiv);
-        wikiDiv.append('<br>' + results);
+        wikiDiv.append(results);
         // wikiLink.html(wikiLink);
 
         $('#wikipedia-text').prepend(wikiHead);
