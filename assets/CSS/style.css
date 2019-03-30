@@ -1,17 +1,3 @@
-@media screen and (max-width: 980) {
-  
-}
-
-@media screen and (max-width: 768) {
-  #wiki-container {
-    position: fixed;
-    margin-left: 58%;
-  }
-}
-
-@media screen and (max-width: 640) {
-
-}
 
 #myHeader {
   z-index: 100;
@@ -22,11 +8,18 @@
 
 #wiki-container {
   position: fixed;
-  margin-left: 57%;
+  margin-left: 50%;
+  /* margin-right: 10% */
+}
+
+.wiki {
+  padding-right: 5%
 }
 
 #column-head {
-  padding-left: 0;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .content {
@@ -63,9 +56,9 @@
 }
 
 #gif-view {
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 #input-head,
@@ -81,3 +74,33 @@ form {
 img {
   max-width: 100%;
 }
+    @media screen and (max-width: 1200) {
+      .wiki {
+        padding-right: 5%;
+      }
+      /* #gif-display {
+        margin-right: 5%;
+      } */
+    }
+    
+    @media screen and (max-width: 980) {
+      #wiki-container {
+        /* position: fixed; */
+        margin-right: 50%;
+        color: red;
+      }
+    }
+    
+    @media screen and (max-width: 768) {
+      #wiki-container {
+        position: fixed;
+        margin-left: 58%;
+      }
+    }
+    
+    @media screen and (max-width: 640) {
+      #wiki-container {
+        position: fixed;
+        padding-left: 10%;
+      }
+    }
