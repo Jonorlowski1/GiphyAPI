@@ -19,16 +19,20 @@
     <div class="row" id="myHeader">
       <div class="col-xs-12" id="column-head">
         <div id="gif-view"></div><br>
-        <div id="form">
-          <form id="gif-form">
-            <label id="input-head" for="gif-input">Search GIF Database</label>
-            <input type="text" id="gif-input">
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="form">
+            <form id="gif-form">
+              <label id="input-head" for="gif-input">Search GIF Database</label>
+              <input type="text" id="gif-input">
 
-            <input type="submit" id="add-gif" value="Add"><br><br>
-            <input type="reset" id="clear" value="Clear Results">
-            <input type="submit" id="more-gifs" value="More Results">
-          </form>
-        </div><br><br>
+              <input type="submit" id="add-gif" value="Add"><br><br>
+              <input type="reset" id="clear" value="Clear Results">
+              <input type="submit" id="more-gifs" value="More Results">
+            </form>
+          </div><br><br>
+        </div>
       </div>
     </div>
 
@@ -62,15 +66,15 @@
         console.log(response);
         var results = response[2][0];
         var link = response[3][0];
-        
+
         var wikiHead = $("<div class='wiki-head'>")
         var wikiDiv = $("<div class='wiki'>");
-        var wikiLink = $("<br><br><a href="+link+">"+'Learn more about the ' + searchTerm +"</a>");
+        var wikiLink = $("<br><br><a href=" + link + ">" + 'Learn more about the ' + searchTerm + "</a>");
 
-        wikiHead.text('Fun fact about the ' + searchTerm +':').css({'font-family': "'Indie Flower', cursive"});
+        wikiHead.text('Fun fact about the ' + searchTerm + ':').css({ 'font-family': "'Indie Flower', cursive" });
 
         wikiHead.append(wikiDiv);
-        wikiDiv.append('<br>'+results);
+        wikiDiv.append('<br>' + results);
         // wikiLink.html(wikiLink);
 
         $('#wikipedia-text').prepend(wikiHead);
