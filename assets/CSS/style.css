@@ -1,3 +1,7 @@
+body {
+  background: rgb(82,116,56);
+  background: radial-gradient(circle, rgba(82,116,56,0.9895308465182948) 22%, rgba(215,133,38,1) 100%);
+}
 
 #myHeader {
   z-index: 100;
@@ -7,7 +11,7 @@
 }
 
 #wiki-container {
-  position: fixed;
+  position: absolute;
   margin-left: 50%;
   /* margin-right: 10% */
 }
@@ -74,7 +78,9 @@
 
 
 form {
-  margin-left: 10%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 img {
@@ -96,14 +102,14 @@ img {
     
     @media screen and (max-width: 768px) {
       #wiki-container {
-        position: fixed;
+        /* position: fixed; */
         margin-left: 58%;
       }
     }
     
     @media screen and (max-width: 640px) {
       #wiki-container {
-        position: fixed;
+        /* position: fixed; */
         /* padding-left: 5%; */
       }
     }
