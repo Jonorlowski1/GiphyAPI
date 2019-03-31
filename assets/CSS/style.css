@@ -21,14 +21,14 @@ body {
   text-align: center;
   /* https://zellwk.com/blog/viewport-based-typography/ 
      Used an equation from that website because, for example, calc(1px + 0.2vw) wouldn't work on Chrome for responsive text re-sizing.*/
-     font-size: calc(112.5% + 0.2vw);
+     font-size: calc(120% + 0.2vw);
 }
 
 .wiki {
   padding-right: 5%;
   font-family: 'Acme', sans-serif;
   /* https://zellwk.com/blog/viewport-based-typography*/ 
-  font-size: calc(112.5% + 0.2vw);
+  font-size: calc(120% + 0.2vw);
 }
 
 .border {
@@ -116,6 +116,7 @@ form {
 }
 
 img {
+  width: 60%;
   max-width: 85%;
 
 }
@@ -133,7 +134,6 @@ img {
     
     @media screen and (max-width: 768px) {
       #wiki-container {
-        /* position: fixed; */
         margin-left: 58%;
       }
       #gif-images,

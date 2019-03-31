@@ -116,8 +116,8 @@
           animalDiv.append(gifs);
 
           // Download Button
-          var downloadLink = $('<br><button><a download>');
-          downloadLink.attr('href', results[i].images.fixed_height.url);
+          var downloadLink = $('<br><a download>');
+          downloadLink.attr('href', results[i].images.original_mp4);
           downloadLink.attr('id', 'download');
           downloadLink.text('DOWNLOAD');
 
@@ -186,9 +186,7 @@
       clearOffset();
     });
 
-
-    // Reset count every time .animal-btn is clicked
-    var offset = 1;
+    var offset = 0;
 
     // ADD MORE GIFS
     $('#more-gifs').on('click', function () {
@@ -202,30 +200,43 @@
         url: queryURL,
         method: 'GET'
       }).then(function (response) {
-        console.log(response);
-
         var results = response.data;
 
         for (i = 0; i < results.length; i++) {
-          // console.log('log');
+          console.log('log');
           var animalDiv = $("<div class='animal'>");
 
-          var rating = results[i].rating.toUpperCase();
-          var pOne = $('<p>').text('Rating: ' + rating);
+          var title = results[i].title;
+          var pOne = $('<p>').text('Title: ' + "'" + title + "'");
+          pOne.attr('id', 'title-text');
           animalDiv.append(pOne);
 
-          var gifs = $("<img class='gif'>");
+          var rating = results[i].rating.toUpperCase();
+          var pTwo = $('<p>').text('Rating: ' + '(' + rating + ')');
+          pTwo.attr('id', 'rating-text');
+          animalDiv.append(pTwo);
+
+          var gifs = $("<img class='gif border border-danger'>");
           gifs.attr('src', results[i].images.fixed_height_still.url);
           gifs.attr('data-still', results[i].images.fixed_height_still.url);
           gifs.attr('data-animate', results[i].images.fixed_height.url);
           gifs.attr('data-state', 'still');
           animalDiv.append(gifs);
 
-          $('#gif-images').append(animalDiv);
+          // Download Button
+          var downloadLink = $('<br><a download>');
+          downloadLink.attr('href', results[i].images.original_mp4);
+          downloadLink.attr('id', 'download');
+          downloadLink.text('DOWNLOAD');
 
+          $('#gif-images').prepend(animalDiv);
+          $(animalDiv).append(downloadLink);
         }
-      })
-    });
+      });
+
+        
+      });
+    
 
 
     $(document).on('click', '.animal-btn', clearContent);
@@ -236,6 +247,11 @@
       savedValue = $(this).val();
       console.log(savedValue);
     } );
+
+    // $(document).on('click', '#download', function () {
+    //   download('href', results[i].images.fixed_height);
+    //   console.log('click');
+    // });
 
     $(document).on('click', '.gif', function () {
       var state = $(this).attr('data-state');
