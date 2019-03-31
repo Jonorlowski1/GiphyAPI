@@ -79,9 +79,6 @@
 
         $('#wikipedia-text').prepend(wikiHead);
         wikiDiv.append(wikiLink);
-
-        console.log(wikiLink);
-
       })
     };
 
@@ -95,8 +92,6 @@
         url: queryURL,
         method: 'GET'
       }).then(function (response) {
-        // console.log(response);
-
         var results = response.data;
 
         for (i = 0; i < results.length; i++) {
@@ -113,7 +108,7 @@
           pTwo.attr('id', 'rating-text');
           animalDiv.append(pTwo);
 
-          var gifs = $("<img class='gif'>");
+          var gifs = $("<img class='gif border border-danger'>");
           gifs.attr('src', results[i].images.fixed_height_still.url);
           gifs.attr('data-still', results[i].images.fixed_height_still.url);
           gifs.attr('data-animate', results[i].images.fixed_height.url);
@@ -121,7 +116,7 @@
           animalDiv.append(gifs);
 
           // Download Button
-          var downloadLink = $('<<br><button><a download>>');
+          var downloadLink = $('<br><button><a download>');
           downloadLink.attr('href', results[i].images.fixed_height.url);
           downloadLink.attr('id', 'download');
           downloadLink.text('DOWNLOAD');
@@ -139,6 +134,8 @@
 
     var header = $('#myHeader');
     var sticky = header.offsetTop;
+
+    var savedValue;
 
     // // Added the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
     function stickyHeader() {
@@ -159,6 +156,7 @@
         t.addClass('animal-btn');
         t.attr('data-name', animals[i]);
         t.text(animals[i]);
+        t.val(animals[i]);
         $('#gif-view').append(t);
 
       }
@@ -195,7 +193,7 @@
     // ADD MORE GIFS
     $('#more-gifs').on('click', function () {
       var gif = $(this).attr('data-name');
-      var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=pDw3ye2yHiWPwWzvr4ruP8qT3pUuCrTq&limit=10&offset=' + offset;
+      var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + savedValue + '&api_key=pDw3ye2yHiWPwWzvr4ruP8qT3pUuCrTq&limit=10&offset=' + offset;
 
       offset++
       console.log('offset: ' + offset);
@@ -209,7 +207,7 @@
         var results = response.data;
 
         for (i = 0; i < results.length; i++) {
-          console.log('log');
+          // console.log('log');
           var animalDiv = $("<div class='animal'>");
 
           var rating = results[i].rating.toUpperCase();
@@ -234,6 +232,10 @@
     $(document).on('click', '.animal-btn', displayGifInfo);
     $(document).on('click', '.animal-btn', displayWikiInfo);
     $(document).on('click', '.animal-btn', clearOffset);
+    $(document).on('click', '.animal-btn', function() {
+      savedValue = $(this).val();
+      console.log(savedValue);
+    } );
 
     $(document).on('click', '.gif', function () {
       var state = $(this).attr('data-state');

@@ -31,6 +31,12 @@ body {
   font-size: calc(112.5% + 0.2vw);
 }
 
+.border {
+    padding:1px;
+    border:1px solid #021a40;
+    background-color:#ff0;
+ }
+
 #column-head {
   align-items: center;
   margin-right: auto;
