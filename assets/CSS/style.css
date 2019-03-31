@@ -19,14 +19,15 @@ body {
 
 .wiki-head {
   text-align: center;
-  /* https://zellwk.com/blog/viewport-based-typography/ */
-  font-size: calc(112.5% + 0.2vw);
+  /* https://zellwk.com/blog/viewport-based-typography/ 
+     Used an equation from that website because, for example, calc(1px + 0.2vw) wouldn't work on Chrome for responsive text re-sizing.*/
+     font-size: calc(112.5% + 0.2vw);
 }
 
 .wiki {
   padding-right: 5%;
   font-family: 'Acme', sans-serif;
-  /* https://zellwk.com/blog/viewport-based-typography/ */
+  /* https://zellwk.com/blog/viewport-based-typography*/ 
   font-size: calc(112.5% + 0.2vw);
 }
 
@@ -59,12 +60,14 @@ body {
   font-family: 'Righteous', cursive;
 }
 
+
 .link-text {
   text-shadow:
   -1px -1px 0 #000,
   1px -1px 0 #000,
   -1px 1px 0 #000,
   1px 1px 0 #000;
+  color: #9EDEFF;
   text-decoration: underline;
 }
 
@@ -107,7 +110,8 @@ form {
 }
 
 img {
-  max-width: 80%;
+  max-width: 85%;
+
 }
     @media screen and (max-width: 1200px) {
       .wiki {
@@ -117,9 +121,7 @@ img {
     
     @media screen and (max-width: 980px) {
       #wiki-container {
-        /* position: fixed; */
         margin-right: 50%;
-        /* color: red; */
       }
     }
     
@@ -128,18 +130,26 @@ img {
         /* position: fixed; */
         margin-left: 58%;
       }
+      #gif-images,
+      #wikipedia-text {
+        margin-top: 125px;
+      }      
+
     }
     
     @media screen and (max-width: 640px) {
-      #wiki-container {
-        /* position: fixed; */
-        /* padding-left: 5%; */
-      }
     }
 
     @media screen and (max-width: 497px) {
       #gif-images,
       #wikipedia-text {
         margin-top: 140px;
+      }      
+    }
+
+    @media screen and (max-width: 360px) {
+      #gif-images,
+      #wikipedia-text {
+        margin-top: 160px;
       }      
     }

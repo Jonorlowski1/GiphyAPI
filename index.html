@@ -121,7 +121,7 @@
           animalDiv.append(gifs);
 
           // Download Button
-          var downloadLink = $('<br><button><a download>');
+          var downloadLink = $('<<br><button><a download>>');
           downloadLink.attr('href', results[i].images.fixed_height.url);
           downloadLink.attr('id', 'download');
           downloadLink.text('DOWNLOAD');
@@ -169,6 +169,7 @@
       var newGif = $('#gif-input').val().trim();
       animals.push(newGif);
       renderButtons();
+      $('#gif-input').val('');
     });
 
     function clearOffset() {
@@ -222,7 +223,7 @@
           gifs.attr('data-state', 'still');
           animalDiv.append(gifs);
 
-          $('#gif-images').prepend(animalDiv);
+          $('#gif-images').append(animalDiv);
 
         }
       })
