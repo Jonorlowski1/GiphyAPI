@@ -116,13 +116,15 @@
           animalDiv.append(gifs);
 
           // Download Button
-          var downloadLink = $('<br><a download>');
-          downloadLink.attr('href', results[i].images.original_mp4);
+          var downloadLink = $('<a download>');
+          var $br = $('<br>');
+          downloadLink.attr('href', results[i].images.original.url);
           downloadLink.attr('id', 'download');
-          downloadLink.text('DOWNLOAD');
+          downloadLink.text('VIEW ORIGINAL SOURCE');
 
           $('#gif-images').prepend(animalDiv);
-          $(animalDiv).append(downloadLink);
+          $(animalDiv).append($br, downloadLink);
+          // $(animalDiv).append(downloadLink);
         }
       });
     };
@@ -171,7 +173,7 @@
     });
 
     function clearOffset() {
-      offset = 0;
+      offset = 10;
       console.log('offset: ' + offset);
     }
 
@@ -186,14 +188,16 @@
       clearOffset();
     });
 
-    var offset = 0;
+      var offset = 10;
 
     // ADD MORE GIFS
     $('#more-gifs').on('click', function () {
+      event.preventDefault();
+
       var gif = $(this).attr('data-name');
       var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + savedValue + '&api_key=pDw3ye2yHiWPwWzvr4ruP8qT3pUuCrTq&limit=10&offset=' + offset;
 
-      offset++
+      offset+=10;
       console.log('offset: ' + offset);
 
       $.ajax({
@@ -225,12 +229,15 @@
 
           // Download Button
           var downloadLink = $('<br><a download>');
-          downloadLink.attr('href', results[i].images.original_mp4);
+          var $br = $('<br>');
+          downloadLink.attr('href', results[i].images.original.url);
           downloadLink.attr('id', 'download');
           downloadLink.text('DOWNLOAD');
 
-          $('#gif-images').prepend(animalDiv);
-          $(animalDiv).append(downloadLink);
+          $('#gif-images').append(animalDiv);
+          $(animalDiv).append($br, downloadLink);
+          downloadLink.text('VIEW ORIGINAL SOURCE');
+
         }
       });
 
