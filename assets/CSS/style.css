@@ -37,9 +37,9 @@ body {
     background-color:#FF0000;
  }
 
- #download {
+ #source {
    color: #ffffff;
-   font-size: 24px;
+   font-size: calc(100% + 0.3vw);
    text-decoration: underline;
  }
 
@@ -67,7 +67,7 @@ body {
 
 .animal {
   text-align: center;
-  margin-bottom: 5%;
+  margin-bottom: 9%;
 }
 
 .animal-btn {
